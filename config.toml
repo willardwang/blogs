@@ -23,14 +23,19 @@ paginate = 10
     weight = 1
 
 [[menu.main]]
-    name = "博客"
+    name = "技术博客"
     url  = "/blog/"
     weight = 2
 
 [[menu.main]]
+    name = "人生随笔"
+    url  = "/blog/"
+    weight = 3
+
+[[menu.main]]
     name = "关于"
     url  = "/about/"
-    weight = 3
+    weight = 4
 
 [params]
     viewMorePostLink = "/blog/"
@@ -41,10 +46,10 @@ paginate = 10
     #Â Style options: default (light-blue), blue, green, marsala, pink, red, turquoise, violet
     style = "blue"
 
-    copyright = "Copyright (c) 2015 - 2016, YourCompany; all rights reserved."
+    copyright = "版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）"
 
-    # Format dates with Go's time formatting
-    date_format = "2018/10/18"
+    # Format dates with Go's time formatting，Go设定时间格式必须基于此时间原点
+    date_format = "2006/01/02"
 
     logo = "img/logo.png"
     logo_small = "img/logo-small.png"
