@@ -39,7 +39,7 @@ paginate = 10
     defaultDescription = "王石宝的博客"
 
     #Â Style options: default (light-blue), blue, green, marsala, pink, red, turquoise, violet
-    style = "default"
+    style = "blue"
 
     copyright = "Copyright (c) 2015 - 2016, YourCompany; all rights reserved."
 
