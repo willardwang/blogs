@@ -11,7 +11,7 @@ disqusShortname = ""
 googleAnalytics = ""
 
 # Define the number of posts per page
-paginate = 10
+paginate = 2
 
 [menu]
 
@@ -26,11 +26,6 @@ paginate = 10
     name = "技术博客"
     url  = "/blog/"
     weight = 2
-
-[[menu.main]]
-    name = "人生随笔"
-    url  = "/blog/"
-    weight = 3
 
 [[menu.main]]
     name = "关于"
