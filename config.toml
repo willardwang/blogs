@@ -23,7 +23,7 @@ paginate = 10
     weight = 1
 
 [[menu.main]]
-    name = "技术博客"
+    name = "博客"
     url  = "/blog/"
     weight = 2
 
@@ -72,6 +72,6 @@ paginate = 10
 # 打赏
 [params.donate]
   enable = true
-  title = "感谢支持~"
+  title = "谢谢您的鼓励~"
   wechat = "/img/wechat.jpg"     #微信，关闭设为 false
   alipay = "/img/alipay.jpg"     #支付宝，关闭设为 false
