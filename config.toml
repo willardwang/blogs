@@ -1,12 +1,19 @@
 baseurl = "https://www.wangyuanyou.com/"
+
 title = "王石宝的博客"
+
 theme = "hugo-universal-blog-theme"
+
 themesDir = "../"
+
 languageCode = "zh-cn"
+
 # Site language. Available translations in the theme's `/i18n` directory.
 defaultContentLanguage = "zh"
+
 # Enable comments by entering your Disqus shortname
 # disqusShortname = "wangshibao"
+
 # Enable Google Analytics by entering your tracking code
 googleAnalytics = ""
 
@@ -14,6 +21,12 @@ googleAnalytics = ""
 paginate = 10
 
 publishDir = "../willardwang.github.io"
+
+# auto-detect Chinese/Japanese/Korean Languages in the content. This will make .Summary and .WordCount behave correctly for CJK languages.
+hasCJKLanguage = true
+
+# The length of text to show in a .Summary.
+summaryLength = 140
 
 [menu]
 
