@@ -1,6 +1,11 @@
 ---
-title: "{{ replace .Name "-" " " | title }}"
-date: {{ .Date }}
-draft: true
+title : "{{ replace .Name "-" " " | title }}"
+date : {{ .Date }}
+tags : []
+categories : []
+draft : true
+banner : "img/banners/placeholder.png"
 ---
+
+> log4j2
 
