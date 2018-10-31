@@ -20,8 +20,6 @@ googleAnalytics = ""
 # Define the number of posts per page
 paginate = 10
 
-publishDir = "../willardwang.github.io"
-
 # auto-detect Chinese/Japanese/Korean Languages in the content. This will make .Summary and .WordCount behave correctly for CJK languages.
 hasCJKLanguage = true
 
