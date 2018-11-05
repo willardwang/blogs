@@ -1,8 +1,8 @@
 ---
 title : "简单几步将log4j2产生的日志采集到阿里云"
 date : 2018-10-29T17:44:18+08:00
-tags : ["log4j2","阿里云","日志"]
-categories : []
+tags : ["外部日志","log4j"]
+categories : ["运维"]
 banner : "img/banners/aliyun-log.jpg"
 ---
 
@@ -105,7 +105,7 @@ banner : "img/banners/aliyun-log.jpg"
 
 5. 如果经常需要查询某类场景，可以使用`另存为快速查询`功能将查询条件存储。比如将ERROR类型的查询存储起来，以便每天检查系统运行是否出错。在左侧的快速查询功能里点击即可。附图：
 
-   {{< imgproc aliyun Resize "847x" />}}
+   {{< imgproc aliyun Resize "841x" />}}
 
 </br>
 

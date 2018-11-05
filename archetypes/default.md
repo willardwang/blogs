@@ -7,5 +7,4 @@ draft : true
 banner : "img/banners/placeholder.png"
 ---
 
-> log4j2
 
