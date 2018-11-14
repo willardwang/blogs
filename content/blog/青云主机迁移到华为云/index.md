@@ -1,7 +1,7 @@
 ---
 title : "青云主机迁移到华为云"
 date : 2018-11-13T16:10:15+08:00
-tags : []
+tags : ["迁移"]
 categories : ["运维"]
 banner : "img/banners/青云主机迁移到华为云.jpg"
 ---

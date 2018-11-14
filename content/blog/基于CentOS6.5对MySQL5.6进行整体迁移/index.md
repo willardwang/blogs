@@ -1,7 +1,7 @@
 ---
 title : "基于CentOS6.5对MySQL5.6进行整体迁移"
 date : 2018-11-14T10:34:06+08:00
-tags : []
+tags : ["迁移"]
 categories : ["运维"]
 banner : "img/banners/迁移MySQL.jpg"
 ---

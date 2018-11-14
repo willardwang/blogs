@@ -1,7 +1,7 @@
 ---
 title : "简单几步将log4j2产生的日志采集到阿里云"
 date : 2018-10-29T17:44:18+08:00
-tags : ["外部日志","log4j"]
+tags : ["log4j"]
 categories : ["运维"]
 banner : "img/banners/aliyun-log.jpg"
 ---
