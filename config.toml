@@ -27,6 +27,9 @@ hasCJKLanguage = true
 # The length of text to show in a .Summary.
 summaryLength = 140
 
+#不要转换url为小写
+disablePathToLower = true
+
 [menu]
 
 # Main menu
