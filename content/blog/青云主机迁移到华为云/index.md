@@ -166,7 +166,7 @@ banner : "img/banners/青云主机迁移到华为云.jpg"
 
     ```
     wget https://www.python.org/ftp/python/2.7.14/Python-2.7.14.tgz //下载Python-2.7.14
-    tar  vxf Python-2.7.6.tgz // 解压
+    tar  vxf Python-2.7.14.tgz // 解压
     cd Python-2.7.14 // 更改工作目录
     ./configure --prefix=/usr/local // 安装
     make && make install // 安装
