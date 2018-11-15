@@ -63,7 +63,7 @@ MySQL：5.6.21
        2、Remove anonymous users? [Y/n] y  // 删除匿名用户
        3、Disallow root login remotely? [Y/n] n // 允许远程登录
        4、Remove test database and access to it? [Y/n] y // 删除测试数据库
-       Reload privilege tables now? [Y/n] Y // 立即重新加载权限表
+       5、Reload privilege tables now? [Y/n] Y // 立即重新加载权限表
     ```
 
     <br>

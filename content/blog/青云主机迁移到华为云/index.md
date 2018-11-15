@@ -176,37 +176,50 @@ banner : "img/banners/青云主机迁移到华为云.jpg"
     python -V // 重新检验Python 版本
     ```
 
-4. 下载obscmd，并解压
+4. 解决系统 Python 软链接指向 Python2.7 版本后，因为yum是不兼容 Python 2.7的，所以yum不能正常工作，我们需要指定 yum 的Python版本
+
+    ```
+    vim /usr/bin/yum
+    
+    将文件头部的
+    #!/usr/bin/python
+    改成
+    #!/usr/bin/python2.6.6
+    ```
+
+5. 下载obscmd，并解压
 
     ```
     wget http://static.huaweicloud.com/upload/files/obs/cmd.zip
     unzip cmd.zip
+    cd obs-cmd-v4.6.7
     ```
 
-5. 配置传输所需的配置文件config.dat，详情参见：https://support.huaweicloud.com/clientogl-obs/obs_02_0270.html
+6. 配置传输所需的配置文件config.dat，详情参见：https://support.huaweicloud.com/clientogl-obs/obs_02_0270.html
 
-    | 配置项          | 名称                        | 备注                         |
-    | --------------- | --------------------------- | ---------------------------- |
-    | DownloadTarget  | 待下载的OBS桶内目标         | 留空，全部下载               |
-    | SavePath        | 本地保存路径                | 和青云服务器的保存路径一致   |
-    | Operation       | 指定对文件的操作类型        | 必填，可选Upload、Download。 |
-    | AK              | Access Key ID接入键标识     | 必填                         |
-    | SK              | Secret Access Key安全接入键 | 必填                         |
-    | BucketNameFixed | 桶名                        | 必填                         |
+    | 配置项          | 名称                               | 备注                         |
+    | --------------- | ---------------------------------- | ---------------------------- |
+    | Operation       | 指定对文件的操作类型，填入Download | 必填，可选Upload、Download。 |
+    | DownloadTarget  | 待下载的OBS桶内目标                | 留空，全部下载               |
+    | SavePath        | 本地保存路径                       | 和青云服务器的保存路径一致   |
+    | AK              | Access Key ID接入键标识            | 必填                         |
+    | SK              | Secret Access Key安全接入键        | 必填                         |
+    | BucketNameFixed | 桶名                               | 必填                         |
 
     ```
     每次任务的传输配置不同的地方仅仅在于桶名(BucketNameFixed)不一致，其余参数相同
     ```
 
-6. 开始传输
+7. 开始传输
 
     ```
     进入到obscmd目录，输入命令开始传输：
-    cd obscmd
+    cd obs-cmd-v4.6.7
     python run.py
+    传输结束后提示：[WARN] Terminated after all requests
     ```
 
-7. 检查传输的文件是否一致
+8. 检查传输的文件是否一致
 
     ```
     分别在青云服务器和华为云服务器使用摘要命令计算传输的文件是否一致，如果一致才说明传输的文件是完整的。
