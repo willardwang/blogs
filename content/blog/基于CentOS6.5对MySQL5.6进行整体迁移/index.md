@@ -70,23 +70,14 @@ MySQL：5.6.21
 
 # 配置
 
-1. 将MySQL数据文件提前放到指定位置
-
-    ```
-    因为原服务器指定的MySQL数据的存放位置为/data/mysql，所以将新服务器的数据也存放到该位置。
-    经过对象存储传输后的文件权限信息也自动和原服务器保持了一致。
-    ```
-
-    {{< imgproc "mysql文件列表" Resize "807x" />}}
-
-2. 登录MySQL
+1. 登录MySQL
 
     ```
     使用上面重置的密码登录MySQL
     mysql -uroot -p
     ```
 
-3. 在进行配置之前先比较配置的差异，做到心中有数
+2. 在进行配置之前先比较配置的差异，做到心中有数
 
     ```
     分别在两个系统中利用show variables命令导出配置，然后利用beyond compare对比差异。
@@ -95,13 +86,28 @@ MySQL：5.6.21
 
     {{< imgproc variables对比图-前 Resize "807x" />}}
 
-4. 复利原服务器下的/etc/my.cnf到新服务器的相同位置
+3. 停止MySQL，防止复制数据文件和配置文件的过程中出错。
+
+    ```
+    service mysql stop
+    ```
+
+4. 将MySQL数据文件放到指定位置
+
+    ```
+    因为原服务器指定的MySQL数据的存放位置为/data/mysql，所以将新服务器的数据也存放到该位置。
+    经过对象存储传输后的文件权限信息也自动和原服务器保持了一致。
+    ```
+
+    {{< imgproc "mysql文件列表" Resize "807x" />}}
+
+5. 复利原服务器下的/etc/my.cnf到新服务器的相同位置
 
     ```
       MySQL会默认使用该位置下的my.cnf配置文件。
     ```
 
-5. 再次重复1中的步骤，比较配置差异
+6. 重启MySQL，再次重复1中的步骤，比较配置差异
 
     ```
     根据下图可见，左侧红色差异减少为8项，其中5项为服务器名称修改后的正常差异，比如：
@@ -112,7 +118,7 @@ MySQL：5.6.21
 
     {{< imgproc variables对比图-后 Resize "807x" />}}
 
-6. variable差异：open_files_limit，从 65536 变为 5010
+7. variable差异：open_files_limit，从 65536 变为 5010
 
     ```
     The number of files that the operating system permits mysqld to open. 
@@ -154,7 +160,7 @@ MySQL：5.6.21
     注意：网上许多文档都是这种方式，但是我的场景下不生效，未知原因。如果你的场景下此方法生效的话，请使用此方法，修改配置文件的方式优于使用开机启动执行命令的方式。
     ```
 
-7. variable差异：pseudo_thread_id
+8. variable差异：pseudo_thread_id
 
     ```
     This variable is for internal server use.
@@ -164,7 +170,7 @@ MySQL：5.6.21
     MySQL文档显示，这是一个系统变量，用于标记当前会话的连接ID，所以差异为正常差异。
     ```
 
-8. variable差异：timestamp
+9. variable差异：timestamp
 
     ```
     Set the time for this client. 
@@ -174,8 +180,17 @@ MySQL：5.6.21
     MySQL文档显示，这是客户端的时间戳，由于导出variable时的时间不同，所以此差异为正常差异。
     ```
 
-9. 重启后弱报数据库是lock状态的话删除lock文件重启MySQL即可，如果不行就重启服务器
+10. 重启后弱报数据库是lock状态的话删除lock文件重启MySQL即可，如果不行就重启服务器
 
     ```
+    该问题是复制数据和配置文件的过程中未停止MySQL造成的
     rm -rf /var/lock/subsys/mysql
     ```
+
+11. 如果Java局域网连接数据库报错：java.sql.SQLException: null, message from server: “Host ‘xxx’ is not allowed to connect
+
+     ```
+     GRANT ALL PRIVILEGES ON *.* TO 'root'@'Java服务器的内网IP' IDENTIFIED BY 'root的密码' WITH GRANT OPTION;
+     ```
+
+
