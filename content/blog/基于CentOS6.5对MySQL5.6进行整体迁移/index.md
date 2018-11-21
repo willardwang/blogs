@@ -1,5 +1,6 @@
 ---
-title : "基于CentOS6.5对MySQL5.6进行整体迁移"
+title : "基于CentOS6.5对MySQL5.6进行整体迁移 - 王石宝的博客"
+description : "基于CentOS6.5对MySQL5.6进行整体迁移 - 王石宝的博客"
 date : 2018-11-14T10:34:06+08:00
 tags : ["迁移"]
 categories : ["运维"]
@@ -190,7 +191,9 @@ MySQL：5.6.21
 11. 如果Java局域网连接数据库报错：java.sql.SQLException: null, message from server: “Host ‘xxx’ is not allowed to connect
 
      ```
-     GRANT ALL PRIVILEGES ON *.* TO 'root'@'Java服务器的内网IP' IDENTIFIED BY 'root的密码' WITH GRANT OPTION;
+     
      ```
+    GRANT ALL PRIVILEGES ON *.* TO 'root'@'Java服务器的内网IP' IDENTIFIED BY 'root的密码' WITH GRANT OPTION;
+    ```
 
 
