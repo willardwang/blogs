@@ -190,9 +190,7 @@ MySQL：5.6.21
 
 11. 如果Java局域网连接数据库报错：java.sql.SQLException: null, message from server: “Host ‘xxx’ is not allowed to connect
 
-     ```
-     
-     ```
+    ```
     GRANT ALL PRIVILEGES ON *.* TO 'root'@'Java服务器的内网IP' IDENTIFIED BY 'root的密码' WITH GRANT OPTION;
     ```
 
