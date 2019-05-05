@@ -4,7 +4,7 @@ description : "Canvas脑图 - 王石宝的博客"
 date : 2019-05-05T17:44:18+08:00
 tags : ["Canvas"]
 categories : ["开发"]
-banner : "img/banners/aliyun-log.jpg"
+banner : "img/banners/脑图.jpg"
 ---
 
 >
