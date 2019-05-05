@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>脑图</title>
+        <style>
+            html, body {
+                overflow: hidden;
+                margin: 0;
+                padding: 0;
+            }
+
+            .backImage {
+                width: 100%;
+                height: 800px;
+                background: url("./background.jpg") center no-repeat;
+            }
+
+            #backCanvas {
+                position: fixed;
+                top: 0;
+                right: 0;
+            }
+
+            #frontCanvas {
+                position: fixed;
+                top: 0;
+                right: 0;
+            }
+        </style>
+        <!--使用babel兼容ie11-->
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.4.4/polyfill.min.js"></script>
+        <script src="./main.babel.js"></script>
+        <script src="./vector.babel.js"></script>
+        <!--如果不用兼容ie，使用下方两个js即可，无需上方四个js-->
+        <!--<script src="./main.js"></script>-->
+        <!--<script src="./vector.js"></script>-->
+        <script>
+            let circles = [
+                {id: 0, x: 102, y: 213, radius: 10.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 1, x: 85, y: 314, radius: 16.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 2, x: 136, y: 384, radius: 10.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 3, x: 190, y: 151, radius: 17, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 4, x: 174, y: 252, radius: 10.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 5, x: 205, y: 338, radius: 6.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 6, x: 210, y: 431, radius: 6.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 7, x: 314, y: 127, radius: 11, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 8, x: 279, y: 179, radius: 6.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 9, x: 280, y: 287, radius: 16.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 10, x: 289, y: 393, radius: 16.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 11, x: 429, y: 145, radius: 7.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 12, x: 373, y: 179, radius: 16.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 13, x: 357, y: 251, radius: 6.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 14, x: 356, y: 324, radius: 10.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 15, x: 364, y: 406, radius: 10.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 16, x: 472, y: 182, radius: 6.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 17, x: 461, y: 257, radius: 10.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 18, x: 428, y: 327, radius: 16.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 19, x: 456, y: 384, radius: 6.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 20, x: 421, y: 427, radius: 6.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 21, x: 535, y: 199, radius: 16.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 22, x: 513, y: 304, radius: 6.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 23, x: 517, y: 356, radius: 10.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 24, x: 521, y: 422, radius: 16.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 25, x: 582, y: 265, radius: 10.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 26, x: 617, y: 306, radius: 6.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 27, x: 598, y: 362, radius: 10.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 28, x: 468, y: 452, radius: 10.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 29, x: 452, y: 485, radius: 6.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 30, x: 513, y: 469, radius: 6.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 31, x: 485, y: 505, radius: 10.5, fillStyle: "rgba(255,255,255,0.58)"},
+                {id: 32, x: 525, y: 522, radius: 10.5, fillStyle: "rgba(255,255,255,0.58)"}
+            ]
+            let lines = [
+                {id: 0, from: 1, to: 0, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 1, from: 1, to: 2, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 2, from: 0, to: 3, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 3, from: 0, to: 4, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 4, from: 1, to: 4, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 5, from: 2, to: 4, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 6, from: 4, to: 3, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 7, from: 3, to: 8, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 8, from: 2, to: 5, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 9, from: 2, to: 6, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 10, from: 4, to: 5, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 11, from: 5, to: 6, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 12, from: 5, to: 10, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 13, from: 3, to: 7, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 14, from: 7, to: 8, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 15, from: 4, to: 8, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 16, from: 4, to: 9, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 17, from: 8, to: 9, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 18, from: 5, to: 9, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 19, from: 9, to: 10, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 20, from: 6, to: 10, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 21, from: 7, to: 11, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 22, from: 7, to: 12, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 23, from: 11, to: 12, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 24, from: 8, to: 12, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 25, from: 8, to: 13, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 26, from: 12, to: 13, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 27, from: 13, to: 9, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 28, from: 9, to: 14, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 29, from: 13, to: 14, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 30, from: 10, to: 14, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 31, from: 10, to: 15, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 32, from: 14, to: 15, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 33, from: 11, to: 16, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 34, from: 12, to: 16, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 35, from: 13, to: 17, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 36, from: 16, to: 17, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 37, from: 12, to: 17, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 38, from: 18, to: 17, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 39, from: 14, to: 18, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 40, from: 13, to: 18, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 41, from: 15, to: 18, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 42, from: 18, to: 19, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 43, from: 15, to: 19, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 44, from: 15, to: 20, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 45, from: 19, to: 20, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 46, from: 16, to: 21, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 47, from: 17, to: 21, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 48, from: 21, to: 22, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 49, from: 17, to: 22, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 50, from: 18, to: 22, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 51, from: 22, to: 23, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 52, from: 19, to: 23, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 53, from: 18, to: 23, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 54, from: 23, to: 24, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 55, from: 19, to: 24, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 56, from: 19, to: 28, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 57, from: 21, to: 25, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 58, from: 22, to: 25, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 59, from: 25, to: 26, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 60, from: 26, to: 27, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 61, from: 22, to: 26, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 62, from: 23, to: 26, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 63, from: 27, to: 23, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 64, from: 27, to: 24, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 65, from: 20, to: 28, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 66, from: 24, to: 28, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 67, from: 24, to: 30, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 68, from: 28, to: 30, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 69, from: 20, to: 29, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 70, from: 28, to: 29, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 71, from: 28, to: 31, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 72, from: 29, to: 31, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 73, from: 30, to: 31, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 74, from: 30, to: 32, strokeStyle: "rgba(255,255,255,0.58)"},
+                {id: 75, from: 31, to: 32, strokeStyle: "rgba(255,255,255,0.58)"},
+            ]
+            let lightLines = [
+                {id: 0}, {id: 2}, {id: 7}, {id: 24}, {id: 26}, {id: 27}, {id: 19}, {id: 31}, {id: 41}, {id: 38}, {id: 47}, {id: 57}, {id: 59},
+                {id: 60}, {id: 64}, {id: 67}, {id: 73}
+            ]
+
+            /**
+             * 页面加载完执行
+             */
+            function loaded() {
+                let backCanvas = document.getElementById("backCanvas")
+                let backCtx = backCanvas.getContext("2d")
+                let frontCanvas = document.getElementById("frontCanvas")
+                let frontCtx = frontCanvas.getContext("2d")
+                //绘制背景
+                drawBackCanvas(backCtx, circles, lines)
+                //初始化亮线
+                initLightLines(lightLines, lines)
+                //按帧绘制前景
+                window.requestAnimationFrame(function () {
+                    drawFrontCanvas(frontCanvas, frontCtx, lightLines, lines)
+                })
+            }
+        </script>
+    </head>
+    <body onload="loaded()">
+        <div class="backImage"></div>
+        <!--背景，包括圆和线，不重绘-->
+        <canvas id="backCanvas" width="800" height="800">不支持canvas</canvas>
+        <!--前景，移动物体，按帧重绘-->
+        <canvas id="frontCanvas" width="800" height="800">
+            不支持canvas
+        </canvas>
+        <!--</div>-->
+    </body>
+</html>

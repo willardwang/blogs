@@ -4,7 +4,7 @@ description : "SpringBoot Vue项目 - 王石宝的博客"
 date : 2019-04-04T19:15:17+08:00
 tags : ["Spring", "Vue"]
 categories : ["开发"]
-banner : "img/banners/placeholder.png"
+banner : "img/banners/Spring Boot Vue项目.jpg"
 ---
 
 > 业余时间孵化一个后端使用Spring全家桶、前端使用Vue的开源基础管理项目。包含基础的注册、登录、权限验证等功能。该项目是前后端分离的，后端Github : <https://github.com/willardwang/springboot-vue>。前端Github : <https://github.com/willardwang/springboot-vue-front>
