@@ -16,7 +16,7 @@ defaultContentLanguage = "zh"
 
 
 # Enable Google Analytics by entering your tracking code
-googleAnalytics = ""
+googleAnalytics = "UA-125549574-1"
 
 # Define the number of posts per page
 paginate = 10
