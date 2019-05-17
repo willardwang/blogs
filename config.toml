@@ -58,7 +58,7 @@ disablePathToLower = true
     #Â Style options: default (light-blue), blue, green, marsala, pink, red, turquoise, violet
     style = "blue"
 
-    copyright = "版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）"
+    copyright = "版权声明：自由转载-保持署名-注明转载链接"
 
     # Format dates with Go's time formatting，Go设定时间格式必须基于此时间原点
     date_format = "2006/01/02"
